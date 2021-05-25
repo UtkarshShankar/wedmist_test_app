@@ -70,7 +70,7 @@ public class ProductActivity extends AppCompatActivity {
         NotificationCompat.Builder builder=new NotificationCompat.Builder(this,Channel_id)
                 .setSmallIcon(R.drawable.shopping)
                 .setContentTitle(Name.get(pos))
-                .setContentText("Has been added to cart")
+                .setContentText("Has been added to your cart")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);

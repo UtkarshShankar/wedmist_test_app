@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<String> title4=new ArrayList<>();
     private String Channel_id="channelID";
     private String Channel_name="channelName";
-    private final int Notification_ID=0;
+    private final int Notification_ID=200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +43,18 @@ public class MainActivity extends AppCompatActivity {
         listView=findViewById(R.id.listview);
         imageView1=findViewById(R.id.favicon);
 
-        //notification building
-        createNotificationChannel();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(this,Channel_id)
-                .setSmallIcon(R.drawable.shopping)
-                .setContentTitle("Rate Us")
-                .setContentText("Don't forget to rate the app")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+//        //notification building
+//        createNotificationChannel();
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+//
+//        AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
+//
+//        long nowTime=System.currentTimeMillis();
+//
+//        long seconds=1000*2;
+//        alarmManager.set(AlarmManager.RTC_WAKEUP,nowTime+seconds,pendingIntent);
 
 
 
@@ -109,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent2);
         });
     }
-    public void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O)
-        {
-            NotificationChannel notificationChannel=new NotificationChannel(Channel_id,Channel_name, NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager notificationManager=getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-    }
+//    public void createNotificationChannel(){
+//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O)
+//        {
+//            NotificationChannel notificationChannel=new NotificationChannel(Channel_id,Channel_name, NotificationManager.IMPORTANCE_DEFAULT);
+//            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+//            notificationManager.createNotificationChannel(notificationChannel);
+//        }
+//    }
 }
